@@ -24,10 +24,30 @@ class _ProductDetailsState extends State<ProductDetails>
   late TabController _tabController;
 
   final List<Map<String, dynamic>> similarProducts = [
-    {'name': 'Orange', 'price': 'GHS 10', 'color': Colors.orange[100]},
-    {'name': 'Apple', 'price': 'GHS 15', 'color': Colors.red[100]},
-    {'name': 'Banana', 'price': 'GHS 8', 'color': Colors.yellow[100]},
-    {'name': 'Mango', 'price': 'GHS 20', 'color': Colors.amber[100]},
+    {
+      'name': 'Orange',
+      'price': 'GHS 10',
+      'color': Colors.orange[100],
+      'image': 'assets/images/orange.png',
+    },
+    {
+      'name': 'Apple',
+      'price': 'GHS 15',
+      'color': Colors.green[100],
+      'image': 'assets/images/apple.png',
+    },
+    {
+      'name': 'Banana',
+      'price': 'GHS 8',
+      'color': Colors.yellow[100],
+      'image': 'assets/images/banana.png',
+    },
+    {
+      'name': 'Mango',
+      'price': 'GHS 20',
+      'color': Colors.amber[100],
+      'image': 'assets/images/mango.png',
+    },
   ];
 
   @override
@@ -46,6 +66,7 @@ class _ProductDetailsState extends State<ProductDetails>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.green[50],
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -57,7 +78,14 @@ class _ProductDetailsState extends State<ProductDetails>
 
       body: Column(
         children: [
-          Expanded(flex: 1, child: Image.asset('assets/images/tomatoes.jpg')),
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.green[50],
+              width: double.infinity,
+              child: Image.asset('assets/images/tomatoes.png'),
+            ),
+          ),
 
           Expanded(
             flex: 2,
@@ -76,73 +104,76 @@ class _ProductDetailsState extends State<ProductDetails>
                   child: TabBarView(
                     controller: _tabController,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.all(20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(widget.name),
-                                Spacer(),
-                                Text(
-                                  widget.price,
-                                  style: TextStyle(color: Colors.green),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-
-                            Row(
-                              children: [
-                                Text('Quantity Available'),
-                                Spacer(),
-                                Text(
-                                  '100',
-                                  style: TextStyle(color: Colors.green),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-
-                            Row(
-                              children: [
-                                Text('Net Weight'),
-                                Spacer(),
-                                Text(
-                                  widget.weight,
-                                  style: TextStyle(color: Colors.green),
-                                ),
-                              ],
-                            ),
-
-                            SizedBox(height: 25),
-                            Text(
-                              'Similar Products',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                      SingleChildScrollView(
+                        child: Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(widget.name),
+                                  Spacer(),
+                                  Text(
+                                    widget.price,
+                                    style: TextStyle(color: Colors.green),
+                                  ),
+                                ],
                               ),
-                            ),
+                              SizedBox(height: 10),
 
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: similarProducts.map(
-                                  (product) {
+                              Row(
+                                children: [
+                                  Text('Quantity Available'),
+                                  Spacer(),
+                                  Text(
+                                    '100',
+                                    style: TextStyle(color: Colors.green),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+
+                              Row(
+                                children: [
+                                  Text('Net Weight'),
+                                  Spacer(),
+                                  Text(
+                                    widget.weight,
+                                    style: TextStyle(color: Colors.green),
+                                  ),
+                                ],
+                              ),
+
+                              SizedBox(height: 25),
+                              Text(
+                                'Similar Products',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+
+                              SizedBox(height: 10),
+
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: similarProducts.map((product) {
                                     return Padding(
                                       padding: EdgeInsets.only(right: 10),
                                       child: ProductDetailsCard(
                                         name: product['name'],
                                         price: product['price'],
                                         color: product['color'],
+                                        image: product['image'],
                                       ),
                                     );
-                                  },
-                                ).toList(), // 👈 .toList() goes here, outside the Row children brackets
+                                  }).toList(),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
 
