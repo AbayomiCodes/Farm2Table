@@ -224,6 +224,7 @@ class _HomeScreenState extends State<HomeScreen>
                                   ),
                                 );
                               },
+
                               child: ProductCard(
                                 name: dummyProducts[index]['name'],
                                 price: dummyProducts[index]['price'],

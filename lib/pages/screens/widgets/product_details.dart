@@ -178,7 +178,51 @@ class _ProductDetailsState extends State<ProductDetails>
                       ),
 
                       //reviews
-                      Center(child: Text('Reviews content')),
+                      Column(
+                        children: [
+                          Center(
+                            child: Text(
+                              '4.5',
+                              style: TextStyle(
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.star, color: Colors.amber),
+                              Icon(Icons.star, color: Colors.amber),
+                              Icon(Icons.star, color: Colors.amber),
+                              Icon(Icons.star, color: Colors.amber),
+                              Icon(Icons.star_half, color: Colors.amber),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+
+                          Center(
+                            child: Text(
+                              '4 reviews',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(height: 15),
+
+                          Container(
+                            height: 150,
+                            width: 400,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(color: Colors.black12),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),

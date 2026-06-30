@@ -22,7 +22,6 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Column(
-        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             height: 120,
@@ -59,7 +58,6 @@ class ProductCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    // Spacer(),
                     Icon(Icons.favorite_border),
                     Icon(Icons.shopping_cart_outlined),
                   ],
